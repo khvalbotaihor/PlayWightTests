@@ -147,8 +147,11 @@ test.describe('describe', ()=> {
 
 test('check navigation', async ({page}) => {
   await page.goto('https://playwright.dev/')
+  await expect(page).toHaveTitle(/Playwright/) // to delete
   await page.getByRole('link', {name: 'Get Started'}).click()
   await expect(page.getByRole('heading', {name: 'Installation'})).toBeVisible()
+  await expect(page.getByRole('heading', {name: 'Installation'})).toBeHidden() // delete
+
 })
 ///
 
